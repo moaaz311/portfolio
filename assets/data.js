@@ -1,4 +1,6 @@
-
+/* ===== EDIT YOUR CONTENT HERE =====
+   Skills: [id, name, category]. Projects list skill ids in `tech`; the network edges are built from that.
+   Milestones: `skills`/`projects` are the nodes that light up when the visitor scrolls to that step. */
 const GH = "https://github.com/moaaz311/";
 const RAW = "https://raw.githubusercontent.com/moaaz311/";
 window.DATA = {
@@ -36,7 +38,7 @@ window.DATA = {
     { id:"sales", name:"Business Sales Overview Dashboard", img: RAW+"Business-Sales-Overview-Dashboard-Power-BI-/main/p1.png",
       summary:"One view of customers, orders, revenue, tax, shipping cost and net sales, with slicers by product, region and time.",
       nums:[["6","KPIs"],["1 + 5","fact + dimension tables"]], tech:["powerbi","dax","pq","star"], repo: GH+"Business-Sales-Overview-Dashboard-Power-BI-" },
-    { id:"ssascubes", name:"SSAS Sales Analysis Cubes",
+    { id:"ssascubes", name:"SSAS Sales Analysis Cubes", img:"assets/img/ssas-cubes-cover.svg",
       summary:"Multidimensional sales analysis by product, customer, channel, salesman and time, with a Year/Quarter hierarchy.",
       nums:[["3","OLAP cubes"],["5","dimensions"]], tech:["sqlserver","ssas","olap","star"], repo: GH+"SSAS_Sales_Analysis__Projects" },
     { id:"ukbank", name:"UK Bank Customers Segmentation", img: RAW+"UK-Bank-Customers-Segmentation-Dashboard-Tableau-/main/p1.png",
