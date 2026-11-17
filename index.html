@@ -1,150 +1,124 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moaaz Achraf Sophy | Junior BI Developer &amp; Data Analyst</title>
-  <meta name="description" content="Portfolio of Moaaz Achraf Sophy, Junior BI Developer and Data Analyst: SQL Server data warehouses, SSIS ETL, SSAS cubes, SSRS and Power BI dashboards." />
+  <meta name="description"
+    content="Junior BI Developer and Data Analyst in Cairo. SQL Server data warehouses, SSIS ETL, SSAS cubes and Power BI dashboards, shown as an interactive map of skills and projects." />
+  <meta name="theme-color" content="#050807" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Moaaz Achraf Sophy | Junior BI Developer & Data Analyst" />
+  <meta property="og:description"
+    content="See how SQL Server, SSIS, DAX and Power BI skills connect to real projects, on an interactive map." />
+  <meta property="og:url" content="https://portfolio-bay-five-76.vercel.app/" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="assets/newcss.css" />
 </head>
-<body>
-  <div class="progress" id="progress"></div>
-  <a class="skip" href="#main">Skip to content</a>
 
+<body>
+  <a class="skip" href="#journey">Skip to content</a>
   <header class="header" id="header">
     <nav class="nav container" aria-label="Main">
-      <a href="#home" class="nav__logo">Moaaz Achraf</a>
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li><a href="#home" class="nav__link">Home</a></li>
-          <li><a href="#about" class="nav__link">About</a></li>
-          <li><a href="#skills" class="nav__link">Skills</a></li>
-          <li><a href="#experience" class="nav__link">Experience</a></li>
-          <li><a href="#projects" class="nav__link">Projects</a></li>
-          <li><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-      </div>
-      <div class="nav__actions">
-        <button class="icon-btn" id="theme-toggle" aria-label="Switch to light theme"><i class="uil uil-moon"></i></button>
-        <button class="icon-btn nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><i class="uil uil-bars"></i></button>
-      </div>
+      <a href="#home" class="logo mono">moaaz<span>.bi</span></a>
+      <ul class="nav__list" id="nav-list">
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#map">Map</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn btn--sm" href="assets/moaaz_achraf_cv.pdf" download>Download CV</a></li>
+      </ul>
+      <button class="menu-btn mono" id="menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button>
     </nav>
   </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero container" id="home">
-      <div class="hero__text">
-        <p class="hero__status"><span class="dot"></span> Open to on-site roles in Cairo, willing to relocate across Egypt</p>
-        <h1 class="hero__title">Moaaz Achraf Sophy</h1>
-        <p class="hero__role"><span class="typing-text" aria-live="off"></span><span class="caret"></span></p>
-        <p class="hero__desc">I build the whole path from raw data to dashboard: SQL Server warehouses, SSIS pipelines, SSAS cubes, and Power BI reports that people can act on.</p>
-        <div class="hero__buttons">
-          <a href="#projects" class="button">View projects</a>
-          <a href="assets/moaaz_achraf_cv.pdf" download class="button button--ghost"><i class="uil uil-download-alt"></i> Download CV</a>
+  <main>
+    <section class="hero" id="home">
+      <canvas id="flow" aria-hidden="true"></canvas>
+      <div class="container hero__in">
+        <p class="mono kicker"><span class="dot"></span> Open to on-site roles in Cairo · willing to relocate across
+          Egypt</p>
+        <h1>Moaaz Achraf Sophy</h1>
+        <p class="hero__role mono">Junior BI Developer | Data Analyst</p>
+        <p class="hero__lead">I take raw data through SQL Server, SSIS and DAX into dashboards people can act on.
+          Explore how each skill connects to the work I’ve shipped.</p>
+        <div class="btns">
+          <a class="btn" href="#journey">Explore my journey</a>
+          <a class="btn btn--ghost" href="assets/moaaz_achraf_cv.pdf" download>Download CV</a>
+          <a class="btn btn--ghost" href="#contact">Contact me</a>
         </div>
-      </div>
-
-      <div class="pipeline" aria-label="How I move data from source to insight">
-        <p class="pipeline__hint">Tap a stage to see how I work</p>
-        <ol class="pipeline__stages" id="pipeline-stages"></ol>
-        <div class="pipeline__track"><span class="pipeline__pulse" id="pipeline-pulse"></span></div>
-        <div class="pipeline__panel" id="pipeline-panel" aria-live="polite"></div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section container" id="about">
-      <h2 class="section__title">About</h2>
-      <div class="about">
-        <div class="about__text">
-          <p>I’m a Junior BI Developer and Data Analyst, and a graduate of the ITI Power BI Development program. I’ve built end-to-end Business Intelligence solutions: SQL Server data warehouses, SSIS ETL pipelines, SSAS cubes, SSRS reports and Power BI dashboards.</p>
-          <p>I model data as star schemas, write DAX, Power Query and T-SQL, use Python (Pandas) for pipelines, and automate reporting with Power Automate, the Power BI REST API and SharePoint. I enjoy turning complex data into something a decision-maker can read in a minute.</p>
-          <div class="edu">
-            <i class="uil uil-graduation-cap"></i>
-            <div>
-              <strong>B.Sc. in Computer and Artificial Intelligence</strong>
-              <span>Faculty of Computers and AI, Banha University · Sep 2021 – Jul 2025</span>
-              <span>Information Security &amp; Digital Forensics</span>
-            </div>
+    <section class="journey container" id="journey">
+      <div class="journey__intro">
+        <h2>My journey, and what it unlocked</h2>
+        <p>Junior BI Developer and Data Analyst, ITI Power BI Development graduate, with hands-on experience building
+          end-to-end BI solutions. As you scroll, each milestone lights up the skills and projects it led to on the map.
+        </p>
+      </div>
+      <div class="journey__grid">
+        <ol class="ms-list" id="ms-list" aria-label="Timeline"></ol>
+
+        <div class="stage" id="map">
+          <div class="filters" id="filters" role="group" aria-label="Filter skills by category"></div>
+          <div class="stage__body">
+            <svg id="graph" role="group"
+              aria-label="Network map connecting skills to projects. Tab to move between nodes, Enter to open details."
+              preserveAspectRatio="xMidYMid meet"></svg>
+            <div class="netlist" id="netlist"></div>
           </div>
-        </div>
-        <div class="stats" id="stats">
-          <div class="stat"><b class="counter" data-target="480">0</b><span>hours of mentor-guided BI training</span></div>
-          <div class="stat"><b class="counter" data-target="8">0</b><span>projects across BI, ETL and ML</span></div>
-          <div class="stat"><b class="counter" data-target="96.8" data-suffix="%">0</b><span>accuracy on the churn model</span></div>
+          <p class="legend mono"><i class="lg lg--p"></i>project <i class="lg lg--s"></i>skill · hover, tap or press
+            Enter on a node</p>
+          <aside class="panel" id="panel" aria-label="Details" aria-hidden="true"></aside>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section class="section container" id="skills">
-      <h2 class="section__title">Skills</h2>
-      <div class="tabs" id="skill-tabs" role="tablist"></div>
-      <div class="skill-panel" id="skill-panel" role="tabpanel" aria-live="polite"></div>
+    <section class="container block" id="projects">
+      <h2>Featured projects</h2>
+      <div id="deep"></div>
+      <h3 class="sub">More work</h3>
+      <div class="more" id="more"></div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section class="section container" id="experience">
-      <h2 class="section__title">Experience</h2>
-      <article class="job">
-        <header class="job__head">
-          <div>
-            <h3>Power BI Developer Intern, Intensive Training Program</h3>
-            <p>Information Technology Institute (ITI), Menoufia Branch</p>
-          </div>
-          <span class="job__date">Jan 2026 – May 2026</span>
-        </header>
-        <ul class="job__list">
-          <li>Completed a 480-hour Business Intelligence and Analytics Engineering program with hands-on work in Python, advanced SQL, statistics, algorithms and Git.</li>
-          <li>Built tested data pipelines using dimensional modeling, ETL, dbt, data quality testing, NoSQL and the Microsoft BI stack (SSIS, SSAS, SSRS) on SQL Server.</li>
-          <li>Produced interactive Power BI and Tableau dashboards with star schemas, DAX, Power Query/M and Power BI Service deployment, plus Microsoft Fabric fundamentals.</li>
-          <li>Sped up analysis workflows with generative AI and prompt engineering, following Agile and data governance, privacy and security practices.</li>
-          <li>Delivered the 60-hour graduation project, Egypt EconLens, combining a SQL Server warehouse, Power BI, Power Automate and an AI Copilot.</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section container" id="projects">
-      <h2 class="section__title">Projects</h2>
-      <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
-      <div class="projects" id="projects-grid"></div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section container" id="contact">
-      <h2 class="section__title">Contact</h2>
+    <section class="container block" id="contact">
+      <h2>Let’s talk</h2>
       <div class="contact">
-        <div class="contact__links">
-          <p>I’m looking for a junior BI or data analyst role. The quickest way to reach me is email or WhatsApp.</p>
-          <button class="contact__card" id="copy-email" type="button"><i class="uil uil-envelope"></i><span><b>Email</b><span id="copy-label">moaazachraf503@gmail.com (tap to copy)</span></span></button>
-          <a class="contact__card" href="tel:+201116945268"><i class="uil uil-phone"></i><span><b>Phone</b>+20 111 694 5268</span></a>
-          <a class="contact__card" href="https://wa.me/201116945268" target="_blank" rel="noopener"><i class="uil uil-whatsapp"></i><span><b>WhatsApp</b>Send a message</span></a>
-          <a class="contact__card" href="https://linkedin.com/in/moaaz-achraf" target="_blank" rel="noopener"><i class="uil uil-linkedin-alt"></i><span><b>LinkedIn</b>linkedin.com/in/moaaz-achraf</span></a>
-          <a class="contact__card" href="https://github.com/moaaz311" target="_blank" rel="noopener"><i class="uil uil-github-alt"></i><span><b>GitHub</b>github.com/moaaz311</span></a>
+        <div class="links">
+          <p>I’m looking for a junior BI or data analyst role. Email or WhatsApp is the fastest way to reach me.</p>
+          <button class="lnk" id="copy-email" type="button"><b class="mono">Email</b><span
+              id="copy-label">moaazachraf503@gmail.com (tap to copy)</span></button>
+          <a class="lnk" href="tel:+201116945268"><b class="mono">Phone</b><span>+20 111 694 5268</span></a>
+          <a class="lnk" href="https://wa.me/201116945268" target="_blank" rel="noopener"><b
+              class="mono">WhatsApp</b><span>Send a message</span></a>
+          <a class="lnk" href="https://www.linkedin.com/in/moaaz-achraf/" target="_blank" rel="noopener"><b
+              class="mono">LinkedIn</b><span>linkedin.com/in/moaaz-achraf</span></a>
+          <a class="lnk" href="https://github.com/moaaz311" target="_blank" rel="noopener"><b
+              class="mono">GitHub</b><span>github.com/moaaz311</span></a>
         </div>
         <form class="form" id="contact-form">
           <label>Your name<input name="name" required autocomplete="name" /></label>
           <label>Your email<input name="email" type="email" required autocomplete="email" /></label>
           <label>Message<textarea name="message" rows="5" required></textarea></label>
-          <button class="button" type="submit">Open in my email app</button>
-          <p class="form__note" id="form-note">This opens a pre-filled email to me.</p>
+          <button class="btn" type="submit">Open in my email app</button>
+          <p class="note" id="form-note">This opens a pre-filled email addressed to me.</p>
         </form>
       </div>
     </section>
   </main>
+  <footer class="footer container"><span>© 2026 Moaaz Achraf Sophy</span><span class="mono">Junior BI Developer · Data
+      Analyst</span></footer>
 
-  <footer class="footer container">
-    <span>© 2026 Moaaz Achraf Sophy</span>
-    <span>Junior BI Developer · Data Analyst</span>
-  </footer>
-
-  <dialog class="modal" id="modal" aria-labelledby="modal-title"></dialog>
+  <script src="assets/data.js"></script>
+  <script src="assets/graph-layout.js"></script>
   <script src="assets/ptj.js"></script>
 </body>
+
 </html>
