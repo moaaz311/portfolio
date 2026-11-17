@@ -1,220 +1,144 @@
-/* ===== Data (from CV) ===== */
-const GH = "https://github.com/moaaz311/";
-const RAW = "https://raw.githubusercontent.com/moaaz311/";
-const PIPELINE = [
-  { name: "Sources", tools: "Python · REST APIs · Excel", text: "Pull data from APIs, files and databases with Python and Pandas, using pagination, rate limiting and caching. LaLiga pipeline: 380 fixtures, 20 clubs, 770+ player records." },
-  { name: "ETL", tools: "SSIS · Power Query · dbt", text: "Clean, validate and load with tested pipelines. Egypt EconLens unifies 3 source systems (2019–2025) through SSIS into one warehouse." },
-  { name: "Warehouse", tools: "SQL Server · SSAS · Star schema", text: "Model facts and dimensions with keys and indexes, then expose them through OLAP cubes. Sales cubes: 3 cubes over a FactSales table with 5 dimensions." },
-  { name: "Insight", tools: "Power BI · Tableau · SSRS", text: "Ship dashboards and paginated reports, then automate PDF export, share links and update emails with Power Automate and the Power BI REST API." }
-];
-const SKILLS = {
-  "BI & Visualization": ["Power BI (DAX, Power Query/M)", "Paginated Reports", "SSRS", "Tableau", "KPI Reporting", "Data Visualization"],
-  "Data Modeling": ["Star Schema", "Dimensional Modeling", "Data Warehousing", "OLAP Cubes"],
-  "Databases & SQL": ["SQL Server", "T-SQL", "Stored Procedures", "Database Design"],
-  "Data Engineering": ["ETL/ELT", "SSIS", "SSAS (Tabular & Multidimensional)", "Python (Pandas, NumPy)", "REST APIs", "Excel", "Data Quality Testing"],
-  "Cloud & Platforms": ["Microsoft Fabric", "Azure", "Power BI Service"],
-  "Automation": ["Power Automate", "SharePoint Lists", "Power BI REST API", "HTTP Triggers", "JSON", "OneDrive", "Outlook"],
-  "Dev Tools": ["Git", "GitHub", "Streamlit", "Flask", "HTML/CSS"]
-};
-const PROJECTS = [
-  {
-    t: "Egypt EconLens", sub: "Economic intelligence and supply chain analytics platform", cat: ["Data Engineering", "Power BI"], feat: true,
-    img: RAW + "FinalProjectAPP/main/EgyptEconLens.png", stack: ["Python", "Flask", "SQL Server", "SSIS", "Power BI", "Fabric", "Azure", "Power Automate"],
-    live: "https://final-project-app-nine.vercel.app", repo: "FinalProjectAPP",
-    pts: ["Unified trade, macroeconomic and supply-chain data (2019–2025) from 3 source systems on Azure, using a SQL Server star schema, SSIS ETL and a mobile-first Flask app.",
-      "Replaced manual SQL querying with a natural-language AI Copilot that returns insights and 4 chart types, using a prompt builder, schema retriever and SQL validator.",
-      "Served Power BI dashboards and paginated RDL reports to public visitors without a Power BI Embedded purchase, via Microsoft Fabric, the REST API and Azure AD guest access.",
-      "Automated PDF export and sharing for 2 report types with HTTP-triggered Power Automate workflows that generate OneDrive share links.",
-      "Removed manual update notices with a scheduled workflow that compares report metadata to a SharePoint version tracker and emails subscribers."]
-  },
-  {
-    t: "LaLiga Match Intelligence", sub: "Python ETL, SQL Server warehouse and Power BI", cat: ["Data Engineering", "Power BI"],
-    stack: ["Python", "Pandas", "SQL Server", "Power BI", "DAX", "REST APIs"], repo: "LaLiga-Match-Intelligence-Analytics",
-    pts: ["Consolidated 380 fixtures, 20 club profiles (xG, possession, Elo) and 770+ player records across 10 statistical categories with a Python ETL pipeline.",
-      "Resolved 223 player headshots (76% of 294) from 2 sources with Unicode name matching and 12-thread checks, with an SVG fallback.",
-      "Designed a SQL Server star schema (2 dimension and 5 fact tables) with keys and indexes, batch-loaded via SQLAlchemy and pyodbc."]
-  },
-  {
-    t: "Bank Customer Churn Prediction", sub: "XGBoost model with a Streamlit app", cat: ["Python & ML"],
-    img: RAW + "churn_prediction_app/main/1(1).png", stack: ["Python", "XGBoost", "scikit-learn", "Streamlit"], repo: "churn_prediction_app",
-    pts: ["Predicted churn with 96.8% accuracy, 90.1% F1 and 0.99 ROC-AUC on 10,127 customer records.",
-      "Found key drivers (about 16% churn; low activity and fewer products raise risk) through EDA across 23 attributes.",
-      "Built a Streamlit app with dashboard, analysis and prediction pages for real-time scoring."]
-  },
-  {
-    t: "Business Sales Overview", sub: "Power BI dashboard with a star schema", cat: ["Power BI"],
-    img: RAW + "Business-Sales-Overview-Dashboard-Power-BI-/main/p1.png", stack: ["Power BI", "DAX", "Power Query", "Star Schema"], repo: "Business-Sales-Overview-Dashboard-Power-BI-",
-    pts: ["Gave stakeholders one view of 6 KPIs (customers, orders, revenue, tax, shipping cost, net sales) with slicers by product, region and time.",
-      "Modeled a star schema (1 fact, 5 dimensions) and wrote DAX measures after cleaning in Power Query.",
-      "Showed that Bikes drive the highest revenue and Canada and Northwest hold the most customers."]
-  },
-  {
-    t: "SSAS Sales Analysis Cubes", sub: "Three OLAP cubes on a star schema", cat: ["Data Engineering"],
-    stack: ["SQL Server", "SSAS", "OLAP", "Star Schema"], repo: "SSAS_Sales_Analysis__Projects",
-    pts: ["Deployed 3 OLAP cubes with measures and a Year/Quarter hierarchy for analysis by product, customer, channel, salesman and time.",
-      "Modeled a FactSales table with 5 dimensions: Product, Customer, Time, Channel, Salesman."]
-  },
-  {
-    t: "Flight Delay Analysis", sub: "Power BI dashboard for delays and cancellations", cat: ["Power BI"],
-    img: RAW + "Flight_Data_Analysis_Project_PowerBI_Dashboard/main/1(1).png", stack: ["Power BI", "Power Query", "Star Schema"], repo: "Flight_Data_Analysis_Project_PowerBI_Dashboard",
-    pts: ["Surfaced the airlines, airports and periods with the highest delays and cancellations through delay and cancellation-rate KPIs and filters.",
-      "Cleaned duplicates, missing values and data types in Power Query, then modeled a star schema."]
-  },
-  {
-    t: "Real Madrid Season Analysis", sub: "2025–2026 La Liga match analysis in Tableau", cat: ["Tableau"],
-    img: RAW + "Real-Madrid-Analysis-Season-2025-2026-LA-Liga/main/p1.png", stack: ["Tableau", "EDA"], repo: "Real-Madrid-Analysis-Season-2025-2026-LA-Liga",
-    pts: ["Identified scoring efficiency, shot accuracy and disciplinary patterns across home and away fixtures.",
-      "Highlighted the opponents most vulnerable to Real Madrid’s attack with KPIs, goals-conceded analysis and match-location filters."]
-  },
-  {
-    t: "UK Bank Customers Segmentation", sub: "Interactive Tableau segmentation dashboard", cat: ["Tableau"],
-    img: RAW + "UK-Bank-Customers-Segmentation-Dashboard-Tableau-/main/p1.png", stack: ["Tableau"], repo: "UK-Bank-Customers-Segmentation-Dashboard-Tableau-",
-    pts: ["Identified customer segments by region, gender, job, age and balance, with a region map that filters every chart.",
-      "Added parameter-controlled dynamic bins for age and balance, calculated fields and a job-classification treemap."]
-  }
-];
+(() => {
+  const D = window.DATA, $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-/* ===== Helpers ===== */
-const $ = (s, c = document) => c.querySelector(s);
-const $$ = (s, c = document) => [...c.querySelectorAll(s)];
-const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* ---------- Data model ---------- */
+  const skills = D.skills.map(([id, name, cat]) => ({ id, name, cat, type: "skill", r: 7 }));
+  const projects = D.projects.map((p) => ({ ...p, type: "project", r: 13 + p.tech.length * 0.7 }));
+  const nodes = [...skills, ...projects], by = Object.fromEntries(nodes.map((n) => [n.id, n]));
+  const edges = projects.flatMap((p) => p.tech.map((t) => [p.id, t]));
+  const usedBy = (id) => projects.filter((p) => p.tech.includes(id));
+  const cats = Object.keys(D.cats), W = 800, H = 620;
+  const badges = (p) => p.tech.map((t) => `<span class="badge mono">${esc(by[t].name)}</span>`).join("");
+  const nums = (p) => (p.nums.length ? `<dl class="nums">${p.nums.map(([v, l]) => `<div><dt class="mono">${esc(v)}</dt><dd>${esc(l)}</dd></div>`).join("")}</dl>` : "");
+  const btns = (p) => `${p.live ? `<a class="btn btn--sm" href="${p.live}" target="_blank" rel="noopener">Live demo</a>` : ""}<a class="btn btn--sm btn--ghost" href="${p.repo}" target="_blank" rel="noopener">Repository</a>`;
 
-/* ===== Theme ===== */
-const root = document.documentElement, themeBtn = $("#theme-toggle");
-function setTheme(t) {
-  root.dataset.theme = t;
-  themeBtn.innerHTML = `<i class="uil uil-${t === "dark" ? "moon" : "sun"}"></i>`;
-  themeBtn.setAttribute("aria-label", `Switch to ${t === "dark" ? "light" : "dark"} theme`);
-  try { localStorage.setItem("theme", t); } catch (e) { }
-}
-let saved = null; try { saved = localStorage.getItem("theme"); } catch (e) { }
-setTheme(saved || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
-themeBtn.onclick = () => setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  /* ---------- Menu + header ---------- */
+  const mb = $("#menu-btn"), nl = $("#nav-list");
+  mb.onclick = () => mb.setAttribute("aria-expanded", nl.classList.toggle("open"));
+  $$("#nav-list a").forEach((a) => a.addEventListener("click", () => { nl.classList.remove("open"); mb.setAttribute("aria-expanded", false); }));
+  addEventListener("scroll", () => $("#header").classList.toggle("scrolled", scrollY > 30), { passive: true });
 
-/* ===== Nav, progress, active link ===== */
-const menu = $("#nav-menu"), toggle = $("#nav-toggle");
-toggle.onclick = () => { const o = menu.classList.toggle("show-menu"); toggle.setAttribute("aria-expanded", o); };
-$$(".nav__link").forEach((a) => a.addEventListener("click", () => { menu.classList.remove("show-menu"); toggle.setAttribute("aria-expanded", false); }));
-addEventListener("scroll", () => {
-  const h = document.documentElement;
-  $("#progress").style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight || 1)})`;
-  $("#header").classList.toggle("scrolled", scrollY > 40);
-}, { passive: true });
-const linkObs = new IntersectionObserver((es) => es.forEach((e) => {
-  if (e.isIntersecting) $$(".nav__link").forEach((a) => a.classList.toggle("active-link", a.getAttribute("href") === "#" + e.target.id));
-}), { rootMargin: "-45% 0px -50% 0px" });
-$$("main section[id]").forEach((s) => linkObs.observe(s));
+  /* ---------- Hero data-flow canvas ---------- */
+  (function flow() {
+    const c = $("#flow"), x = c.getContext("2d"); let w, h, pk = [], vis = true;
+    const rails = 7, size = () => { const d = devicePixelRatio || 1; w = c.clientWidth; h = c.clientHeight; c.width = w * d; c.height = h * d; x.setTransform(d, 0, 0, d, 0, 0); };
+    size(); addEventListener("resize", size);
+    for (let i = 0; i < 28; i++) pk.push({ r: i % rails, x: Math.random() * 1400, v: 0.4 + Math.random() * 0.9, l: 30 + Math.random() * 60 });
+    function draw() {
+      x.clearRect(0, 0, w, h);
+      for (let r = 0; r < rails; r++) {
+        const y = ((r + 1) / (rails + 1)) * h; x.strokeStyle = "rgba(34,197,94,.13)"; x.beginPath(); x.moveTo(0, y); x.lineTo(w, y); x.stroke();
+        for (let k = 1; k < 8; k++) { x.fillStyle = "rgba(34,197,94,.3)"; x.fillRect((k / 8) * w - 2, y - 2, 4, 4); }
+      }
+      pk.forEach((p) => {
+        const y = ((p.r + 1) / (rails + 1)) * h; if (!reduce) p.x = (p.x + p.v) % (w + 200);
+        const g = x.createLinearGradient(p.x - p.l, 0, p.x, 0); g.addColorStop(0, "rgba(74,222,128,0)"); g.addColorStop(1, "#4ADE80");
+        x.strokeStyle = g; x.lineWidth = 2; x.shadowColor = "#4ADE80"; x.shadowBlur = 8; x.beginPath(); x.moveTo(p.x - p.l, y); x.lineTo(p.x, y); x.stroke(); x.shadowBlur = 0; x.lineWidth = 1;
+      });
+      if (!reduce && vis) requestAnimationFrame(draw);
+    }
+    new IntersectionObserver((e) => { const was = vis; vis = e[0].isIntersecting; if (vis && !was && !reduce) draw(); }).observe(c);
+    draw();
+  })();
 
-/* ===== Reveal (sections fade in once) ===== */
-const revObs = new IntersectionObserver((es) => es.forEach((e) => {
-  if (e.isIntersecting) { e.target.classList.add("in"); revObs.unobserve(e.target); }
-}), { threshold: 0.08 });
-$$(".section").forEach((s) => { s.classList.add("reveal"); revObs.observe(s); });
-
-/* ===== Typing ===== */
-const roles = ["Junior BI Developer", "Data Analyst"], tt = $(".typing-text");
-let ri = 0, ci = 0, del = false;
-(function type() {
-  if (reduced) { tt.textContent = roles.join(" | "); return; }
-  const w = roles[ri];
-  tt.textContent = w.slice(0, del ? --ci : ++ci);
-  let d = del ? 40 : 90;
-  if (!del && ci === w.length) { del = true; d = 1800; }
-  else if (del && ci === 0) { del = false; ri = (ri + 1) % roles.length; d = 400; }
-  setTimeout(type, d);
-})();
-
-/* ===== Counters ===== */
-new IntersectionObserver((es, o) => {
-  if (!es[0].isIntersecting) return;
-  o.disconnect();
-  $$(".counter").forEach((c) => {
-    const target = +c.dataset.target, suf = c.dataset.suffix || (target > 100 ? "" : "+"), dec = String(target).includes(".") ? 1 : 0;
-    if (reduced) { c.textContent = target.toFixed(dec) + suf; return; }
-    const t0 = performance.now();
-    (function step(t) {
-      const p = Math.min((t - t0) / 1400, 1), v = target * (1 - Math.pow(1 - p, 3));
-      c.textContent = v.toFixed(dec) + (p === 1 ? suf : "");
-      if (p < 1) requestAnimationFrame(step);
-    })(t0);
+  /* ---------- Network map ---------- */
+  const svg = $("#graph"), stage = $("#map");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  layout(nodes, edges, W, H, (n) => {
+    if (n.type === "project") return { x: W / 2, y: H / 2 };
+    const a = -Math.PI / 2 + (cats.indexOf(n.cat) * 2 * Math.PI) / cats.length;
+    return { x: W / 2 + W * 0.38 * Math.cos(a), y: H / 2 + H * 0.36 * Math.sin(a) };
   });
-}, { threshold: 0.4 }).observe($("#stats"));
+  svg.innerHTML = `<g>${edges.map(([p, s], i) => `<line class="edge" data-p="${p}" data-s="${s}" style="animation-delay:${(i % 9) * 0.45}s"/>`).join("")}</g>
+    <g>${nodes.map((n) => `<g class="node ${n.type}" data-id="${n.id}" tabindex="0" role="button" aria-label="${esc(n.name)}, ${n.type}, ${n.type === "project" ? n.tech.length + " skills" : usedBy(n.id).length + " projects"}"><circle r="${n.r}"/><text y="${n.r + 13}" text-anchor="middle">${esc(n.name.length > 26 ? n.name.split(" ").slice(0, 2).join(" ") : n.name)}</text></g>`).join("")}</g>`;
+  const nodeEl = Object.fromEntries($$(".node", svg).map((e) => [e.dataset.id, e])), edgeEls = $$(".edge", svg);
 
-/* ===== Hero pipeline ===== */
-const stagesEl = $("#pipeline-stages"), panel = $("#pipeline-panel"), pulse = $("#pipeline-pulse");
-let cur = 0, timer = null;
-stagesEl.innerHTML = PIPELINE.map((s, i) => `<li><button type="button" data-i="${i}"><b>${s.name}</b><span>${s.tools}</span></button></li>`).join("");
-function selectStage(i) {
-  cur = i;
-  $$("button", stagesEl).forEach((b, j) => { b.setAttribute("aria-pressed", j === i); b.classList.toggle("done", j < i); });
-  pulse.style.left = `${(i + 0.5) * (100 / PIPELINE.length)}%`;
-  panel.textContent = PIPELINE[i].text;
-}
-function auto() { if (reduced) return; clearInterval(timer); timer = setInterval(() => selectStage((cur + 1) % PIPELINE.length), 3500); }
-stagesEl.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { clearInterval(timer); selectStage(+b.dataset.i); } });
-stagesEl.addEventListener("mouseenter", () => clearInterval(timer));
-stagesEl.addEventListener("mouseleave", auto);
-selectStage(0); auto();
+  let t0 = 0, running = true;
+  function draw(t) {
+    const off = (n, i) => (reduce ? [0, 0] : [Math.sin(t / 1700 + i * 1.7) * 3, Math.cos(t / 2100 + i * 1.3) * 3]);
+    const pos = {}; nodes.forEach((n, i) => { const [dx, dy] = off(n, i); pos[n.id] = [n.x + dx, n.y + dy]; nodeEl[n.id].setAttribute("transform", `translate(${pos[n.id][0].toFixed(1)} ${pos[n.id][1].toFixed(1)})`); });
+    edgeEls.forEach((e) => { const a = pos[e.dataset.p], b = pos[e.dataset.s]; e.setAttribute("x1", a[0]); e.setAttribute("y1", a[1]); e.setAttribute("x2", b[0]); e.setAttribute("y2", b[1]); });
+    if (!reduce && running) requestAnimationFrame(draw);
+  }
+  draw(0);
+  new IntersectionObserver((e) => { const was = running; running = e[0].isIntersecting; if (running && !was && !reduce) requestAnimationFrame(draw); }).observe(stage);
 
-/* ===== Skills tabs ===== */
-const tabs = $("#skill-tabs"), sp = $("#skill-panel"), cats = Object.keys(SKILLS);
-tabs.innerHTML = cats.map((c, i) => `<button role="tab" type="button" aria-selected="${i === 0}" data-c="${c}">${c}</button>`).join("");
-function showSkills(c) {
-  $$("button", tabs).forEach((b) => b.setAttribute("aria-selected", b.dataset.c === c));
-  sp.innerHTML = SKILLS[c].map((s, i) => `<span class="chip" style="animation-delay:${i * 40}ms">${esc(s)}</span>`).join("");
-}
-tabs.onclick = (e) => { const b = e.target.closest("button"); if (b) showSkills(b.dataset.c); };
-showSkills(cats[0]);
+  /* Mobile list (shown instead of the graph on small screens) */
+  $("#netlist").innerHTML = `<h3 class="mono">Projects</h3>${projects.map((p) => `<button class="lrow" data-id="${p.id}"><b>${esc(p.name)}</b><span>${p.tech.length} skills</span></button>`).join("")}
+    ${cats.map((c) => `<h3 class="mono">${D.cats[c]}</h3><div class="chips">${skills.filter((s) => s.cat === c).map((s) => `<button class="chip" data-id="${s.id}">${esc(s.name)}</button>`).join("")}</div>`).join("")}`;
+  const items = $$("[data-id]", stage);
 
-/* ===== Projects ===== */
-const filters = ["All", "Power BI", "Tableau", "Data Engineering", "Python & ML"], grid = $("#projects-grid"), fEl = $("#filters");
-fEl.innerHTML = filters.map((f, i) => `<button type="button" aria-pressed="${i === 0}" data-f="${f}">${f}</button>`).join("");
-function renderProjects(f) {
-  $$("button", fEl).forEach((b) => b.setAttribute("aria-pressed", b.dataset.f === f));
-  grid.innerHTML = PROJECTS.map((p, i) => ({ p, i })).filter(({ p }) => f === "All" || p.cat.includes(f)).map(({ p, i }) => `
-    <button class="card${p.feat ? " card--feat" : ""}" type="button" data-i="${i}">
-      ${p.img ? `<img src="${p.img}" alt="" loading="lazy" onerror="this.remove()">` : ""}
-      <span class="card__body">
-        <h3>${esc(p.t)}</h3><span class="card__sub">${esc(p.sub)}</span>
-        <span class="card__stack">${p.stack.slice(0, 4).map((s) => `<i>${esc(s)}</i>`).join("")}</span>
-        <span class="card__more">View details <i class="uil uil-arrow-right"></i></span>
-      </span>
-    </button>`).join("");
-}
-fEl.onclick = (e) => { const b = e.target.closest("button"); if (b) renderProjects(b.dataset.f); };
-renderProjects("All");
+  /* State: hover/focus, locked (clicked) node, category filter, journey step */
+  let hover = null, locked = null, cat = "all", step = -1;
+  function paint() {
+    const id = hover || locked, rel = new Set(id ? [id] : []);
+    if (id) edges.forEach(([p, s]) => { if (p === id) rel.add(s); if (s === id) rel.add(p); });
+    svg.classList.toggle("focus", !!id);
+    const match = (n) => cat === "all" || (n.type === "skill" ? n.cat === cat : n.tech.some((t) => by[t].cat === cat));
+    const m = D.milestones, cur = m[step] || {}, up = new Set(), now = new Set();
+    m.slice(0, step + 1).forEach((x) => (x.all ? nodes.forEach((n) => up.add(n.id)) : [...x.skills, ...x.projects].forEach((i) => up.add(i))));
+    if (cur.all) nodes.forEach((n) => now.add(n.id)); else[...(cur.skills || []), ...(cur.projects || [])].forEach((i) => now.add(i));
+    items.forEach((e) => {
+      const n = by[e.dataset.id];
+      e.classList.toggle("rel", rel.has(n.id)); e.classList.toggle("off", !match(n)); e.classList.toggle("unlock", up.has(n.id)); e.classList.toggle("lit", now.has(n.id)); e.classList.toggle("sel", locked === n.id);
+    });
+    edgeEls.forEach((e) => { e.classList.toggle("rel", !!id && (e.dataset.p === id || e.dataset.s === id)); e.classList.toggle("off", !match(by[e.dataset.s])); });
+  }
+  svg.addEventListener("pointerover", (e) => { const g = e.target.closest(".node"); hover = g ? g.dataset.id : null; paint(); });
+  svg.addEventListener("pointerleave", () => { hover = null; paint(); });
+  svg.addEventListener("focusin", (e) => { const g = e.target.closest(".node"); hover = g ? g.dataset.id : null; paint(); });
+  svg.addEventListener("focusout", () => { hover = null; paint(); });
+  function pick(e) { const g = e.target.closest("[data-id]"); if (g && stage.contains(g)) openPanel(g.dataset.id, g); }
+  stage.addEventListener("click", pick);
+  svg.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(e); } });
 
-/* ===== Modal ===== */
-const modal = $("#modal");
-grid.onclick = (e) => {
-  const c = e.target.closest(".card"); if (!c) return;
-  const p = PROJECTS[+c.dataset.i];
-  modal.innerHTML = `<div class="modal__box">
-    <button class="icon-btn modal__close" type="button" aria-label="Close" data-close><i class="uil uil-times"></i></button>
-    <h3 id="modal-title">${esc(p.t)}</h3><p class="card__sub">${esc(p.sub)}</p>
-    ${p.img ? `<img src="${p.img}" alt="Screenshot of ${esc(p.t)}" onerror="this.remove()">` : ""}
-    <ul>${p.pts.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
-    <div class="card__stack">${p.stack.map((s) => `<i>${esc(s)}</i>`).join("")}</div>
-    <div class="hero__buttons">
-      ${p.live ? `<a class="button" href="${p.live}" target="_blank" rel="noopener">Live demo</a>` : ""}
-      <a class="button button--ghost" href="${GH + p.repo}" target="_blank" rel="noopener"><i class="uil uil-github"></i> Repository</a>
-    </div></div>`;
-  modal.showModal();
-};
-modal.addEventListener("click", (e) => { if (e.target === modal || e.target.closest("[data-close]")) modal.close(); });
+  /* Filters */
+  const fEl = $("#filters"); fEl.innerHTML = [["all", "All"], ...cats.map((c) => [c, D.cats[c]])].map(([k, l]) => `<button type="button" class="mono" data-f="${k}" aria-pressed="${k === "all"}">${l}</button>`).join("");
+  fEl.onclick = (e) => { const b = e.target.closest("button"); if (!b) return; cat = b.dataset.f; $$("button", fEl).forEach((x) => x.setAttribute("aria-pressed", x === b)); paint(); };
 
-/* ===== Contact ===== */
-const EMAIL = "moaazachraf503@gmail.com";
-$("#copy-email").onclick = async () => {
-  const l = $("#copy-label");
-  try { await navigator.clipboard.writeText(EMAIL); l.textContent = "Copied to clipboard"; }
-  catch (e) { location.href = "mailto:" + EMAIL; }
-  setTimeout(() => (l.textContent = EMAIL + " (tap to copy)"), 2000);
-};
-$("#contact-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const d = new FormData(e.target);
-  location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Portfolio message from " + d.get("name"))}&body=${encodeURIComponent(d.get("message") + "\n\n" + d.get("name") + " (" + d.get("email") + ")")}`;
-  $("#form-note").textContent = "Your email app should open with the message ready to send.";
-});
+  /* Side panel */
+  const panel = $("#panel"); let opener = null;
+  function openPanel(id, from) {
+    const n = by[id]; locked = id; opener = from || null;
+    panel.innerHTML = `<button class="x mono" type="button" data-close aria-label="Close details">Close</button>` + (n.type === "project"
+      ? `<p class="mono tag">Project</p><h3>${esc(n.name)}</h3><p>${esc(n.summary)}</p>${nums(n)}<div class="badges">${badges(n)}</div><div class="btns">${btns(n)}</div>`
+      : `<p class="mono tag">Skill · ${esc(D.cats[n.cat])}</p><h3>${esc(n.name)}</h3>${usedBy(id).length ? `<p>Used in ${usedBy(id).length} project${usedBy(id).length > 1 ? "s" : ""}:</p><ul class="plist">${usedBy(id).map((p) => `<li><button type="button" data-id="${p.id}">${esc(p.name)}</button></li>`).join("")}</ul>` : `<p>Practised in the ITI program. No project on this map uses it yet.</p>`}`);
+    panel.classList.add("open"); panel.setAttribute("aria-hidden", "false"); paint(); $(".x", panel).focus();
+  }
+  function closePanel() { locked = null; panel.classList.remove("open"); panel.setAttribute("aria-hidden", "true"); paint(); if (opener) opener.focus(); }
+  panel.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) return closePanel(); const b = e.target.closest("[data-id]"); if (b) openPanel(b.dataset.id, opener); });
+  addEventListener("keydown", (e) => { if (e.key === "Escape" && panel.classList.contains("open")) closePanel(); });
+
+  /* ---------- Journey (scroll-driven) ---------- */
+  const ml = $("#ms-list");
+  ml.innerHTML = D.milestones.map((m, i) => `<li class="ms" data-i="${i}"><span class="ms__dot"></span><p class="mono ms__year">${esc(m.year)}</p><h3>${esc(m.title)}</h3><p>${esc(m.text)}</p>
+    ${m.all ? `<p class="mono unl">Unlocks: everything on the map</p>` : m.skills.length + m.projects.length ? `<p class="mono unl">Unlocks: ${m.projects.length ? m.projects.length + " projects, " : ""}${m.skills.length} skills</p>` : ""}</li>`).join("");
+  const msEls = $$(".ms", ml);
+
+  const mo = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { step = +e.target.dataset.i; msEls.forEach((m, i) => m.classList.toggle("on", i <= step)); paint(); } }), { rootMargin: "-45% 0px -45% 0px" });
+  msEls.forEach((m) => mo.observe(m));
+  function rail() { const r = ml.getBoundingClientRect(); ml.style.setProperty("--p", Math.max(0, Math.min(1, (innerHeight * 0.5 - r.top) / r.height)).toFixed(3)); }
+  addEventListener("scroll", rail, { passive: true }); rail();
+
+  /* ---------- Project sections ---------- */
+  $("#deep").innerHTML = projects.filter((p) => p.feat).map((p) => `<article class="deep"><div>
+      <p class="mono tag">Featured project</p><h3>${esc(p.name)}</h3><p class="lead">${esc(p.summary)}</p>
+      <ul class="pts">${p.pts.map((x) => `<li>${esc(x)}</li>`).join("")}</ul><div class="badges">${badges(p)}</div>
+      <div class="btns">${btns(p)}<button class="btn btn--sm btn--ghost seemap" data-id="${p.id}" type="button">See on map</button></div></div>
+      <div class="deep__side">${p.img ? `<img src="${p.img}" alt="Screenshot of the ${esc(p.name)} platform" loading="lazy" onerror="this.remove()">` : ""}${nums(p)}</div></article>`).join("");
+  $("#more").innerHTML = projects.filter((p) => !p.feat).map((p) => `<article class="mcard">${p.img ? `<img src="${p.img}" alt="Screenshot of the ${esc(p.name)} dashboard" loading="lazy" onerror="this.remove()">` : ""}
+      <div class="mcard__b"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p>${nums(p)}<div class="badges">${badges(p)}</div><div class="btns">${btns(p)}<button class="btn btn--sm btn--ghost seemap" data-id="${p.id}" type="button">See on map</button></div></div></article>`).join("");
+  document.addEventListener("click", (e) => { const b = e.target.closest(".seemap"); if (!b) return; $("#map").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" }); setTimeout(() => openPanel(b.dataset.id, null), reduce ? 0 : 500); });
+
+  /* ---------- Contact ---------- */
+  const EMAIL = "moaazachraf503@gmail.com";
+  $("#copy-email").onclick = async () => { const l = $("#copy-label"); try { await navigator.clipboard.writeText(EMAIL); l.textContent = "Copied to clipboard"; } catch (e) { location.href = "mailto:" + EMAIL; } setTimeout(() => (l.textContent = EMAIL + " (tap to copy)"), 2000); };
+  $("#contact-form").addEventListener("submit", (e) => {
+    e.preventDefault(); const d = new FormData(e.target);
+    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Portfolio message from " + d.get("name"))}&body=${encodeURIComponent(d.get("message") + "\n\n" + d.get("name") + " (" + d.get("email") + ")")}`;
+    $("#form-note").textContent = "Your email app should open with the message ready to send.";
+  });
+  paint();
+})();
